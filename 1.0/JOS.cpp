@@ -1,4 +1,4 @@
-#include "menu.h"
+#include "FUNCTIONS.H"
 using namespace std;
 /*JOS main*/
 int main() {
