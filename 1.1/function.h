@@ -44,5 +44,5 @@ bool closeJOS()
 	}
 }
 void EScript() {
-	system("start EScript 1 0");
+	system("start EScript 1 1");
 }
