@@ -38,7 +38,9 @@ int main(int argc,char* args[]) {
 		} else if(opr == "msg") {
 			char msg[1000];
 			cin >> msg;
+			SetConsoleTextAttribute(handle,FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_INTENSITY);
 			cout << msg << endl;
+			SetConsoleTextAttribute(handle,FOREGROUND_BLUE | FOREGROUND_INTENSITY);
 		} else if(opr == "msg_box") {
 			char title[20],msg[1000];
 			cin >> title >> msg;
