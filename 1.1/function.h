@@ -3,17 +3,22 @@
 #include <windows.h>
 #include <conio.h>
 using namespace std;
+
 extern HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+
 void draw_start()
 {
-	SetConsoleTextAttribute(handle,FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-	cout << "      ■   ■■     ■■■" << endl;
-	cout << "      ■ ■    ■ ■      " << endl;
-	cout << "      ■ ■    ■   ■■  " << endl;
-	cout << "■    ■ ■    ■       ■" << endl;
-	cout << "  ■■     ■■   ■■■  " << endl;
-	SetConsoleTextAttribute(handle,FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+	SetConsoleTextAttribute(handle, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+	cout << "        **    ******     ******  " << endl;
+	cout << "        **   **    **   **     * " << endl;
+	cout << "        **  **      **  **       " << endl;
+	cout << "        **  **      **    *****  " << endl;
+	cout << " **     **  **      **        ** " << endl;
+	cout << "  **    **   **    **   *     ** " << endl;
+	cout << "   ******     ******     ******  " << endl;
+	SetConsoleTextAttribute(handle, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
 }
+
 void draw_menu()
 {
 	cout << "------------------------------------" << endl;
@@ -24,25 +29,43 @@ void draw_menu()
 	cout << "|           2.EScript(REPL)        |" << endl;
 	cout << "------------------------------------" << endl;
 }
+
 bool closeJOS()
 {
-	int yn = MessageBox(NULL,TEXT("Shutdown?"),TEXT("Prompt"),MB_YESNO);
-	if(yn == IDYES) {
-		for(int i = 0; i < 3; i ++) {
-			cout << "shutdown";
-			for(int i = 0; i < 3; i ++) {
+	int yn = MessageBox(NULL, TEXT("Shutdown?"), TEXT("Prompt"), MB_YESNO);
+	if(yn == IDYES) 
+	{
+		for(int i = 1; i <= 3; ++ i)
+		{
+			cout << "Now shutdown";
+			for(int i = 1; i <= 3; ++ i)
+			{
 				cout << ".";
-				Sleep(1000);
+				Sleep(500);
 			}
+
 			system("cls");
 		}
-		MessageBox(NULL,TEXT("Successfully!"),TEXT("Prompt"),MB_OK);
+
+		MessageBox(NULL, TEXT("Successfully!"), TEXT("Prompt"), MB_OK);
 		return true;
-	} else {
-		MessageBox(NULL,TEXT("Canceled"),TEXT("Prompt"),MB_OK);
+	} 
+	else 
+	{
+		MessageBox(NULL, TEXT("Canceled"), TEXT("Prompt"), MB_OK);
 		return false;
 	}
 }
-void EScript() {
+
+void EScript() 
+{
 	system("start EScript 1 1");
+}
+
+LPWSTR c_style_string_to_LPWSTR(char *str)
+{
+	LPWSTR res;
+	memset(res, 0, sizeof(res));
+	MultiByteToWideChar(CP_ACP, 0, str, strlen(str) + 1, res, sizeof(res) / sizeof(LPCWSTR));
+	return res;
 }
